@@ -10,3 +10,9 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+.DS_Store
+docker/dstrad
+docker/trawd
+docker/miniupnpc-1.9.20140401.tar.gz
+docker/go1.10.2.linux-amd64.tar.gz
