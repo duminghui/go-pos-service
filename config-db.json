@@ -1,0 +1,8 @@
+{
+    "net":"tcp",
+    "addr":"go-pos-mysql:3306",
+    "dbname":"posservice",
+    "user":"posservice",
+    "passwd":"posservice"
+}
+

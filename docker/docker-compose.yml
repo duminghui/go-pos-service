@@ -9,29 +9,31 @@ services:
         hostname: go-pos-service
         volumes:
             - ~/go/src:/go/src
+            - ~/go/pkg/dep:/go/pkg/dep
             - ~/docker-run-data/go-pos-service/wallet-data-dst:/root/.dstra
             - ~/docker-run-data/go-pos-service/wallet-data-traw:/root/.traw
         tty: true
-        # depends_on:
-        #     - go-pos-mysql
+        working_dir: /go/src/github.com/duminghui/go-pos-service
+        depends_on:
+            - go-pos-mysql
+        networks:
+            - go-pos-service-network
+
+    go-pos-mysql:
+        image: go-pos-mysql
+        build:
+          context: .
+          dockerfile: Dockerfile-mysql
+        container_name: go-pos-mysql
+        hostname: go-pos-mysql
+        ports:
+            - "127.0.0.1:3307:3306"
+        volumes:
+            - ~/docker-run-data/go-pos-service/mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: posservice
         networks:
           - go-pos-service-network
-
-    # go-pos-mysql:
-    #     image: go-pos-mysql
-    #     build:
-    #       context: .
-    #       dockerfile: Dockerfile-mysql
-    #     container_name: go-pos-mysql
-    #     hostname: go-pos-mysql
-    #     ports:
-    #         - "127.0.0.1:3306:3306"
-    #     volumes:
-    #         - ../run-data/pos-mysql:/var/lib/mysql
-    #     environment:
-    #         MYSQL_ROOT_PASSWORD: posservice
-    #     networks:
-    #       - go-pos-service-network
 
 
 networks:

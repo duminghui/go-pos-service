@@ -15,4 +15,9 @@
 docker/dstrad
 docker/trawd
 docker/miniupnpc-1.9.20140401.tar.gz
-docker/go1.10.2.linux-amd64.tar.gz
+docker/go1.10.3.linux-amd64.tar.gz
+docker/libs
+
+.virtualgo
+vendor
+/go-pos-service
